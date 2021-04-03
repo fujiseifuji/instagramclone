@@ -3,6 +3,7 @@ Rails.application.routes.draw do
    controllers: { registrations: 'registrations' }
   root 'posts#index'
   get '/users/:id', to: 'users#show', as: 'user'
+  resources :users
   resources :posts, only: %i(new create index show destroy) do
     resources :photos,   only: %i(create)
     resources :likes,    only: %i(create destroy)

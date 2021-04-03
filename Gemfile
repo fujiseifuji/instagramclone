@@ -60,3 +60,5 @@ gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 
 gem 'pg', group: :production
+
+gem 'faker', '2.1.2'
