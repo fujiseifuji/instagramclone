@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.photos.present?
       @post.save
-      redirect_to root_path
+      redirect_to post_path(@post)
       flash[:notice] = "投稿が保存されました"
     else
       redirect_to root_path

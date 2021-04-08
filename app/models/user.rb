@@ -29,16 +29,26 @@ class User < ApplicationRecord
     result
   end
 
+  def feed
+    Post.where("user_id = :user_id", user_id: id)
+  end
+
+  def self.search(search) 
+    if search
+      where(['name LIKE ?', "%#{search}%"]) 
+    else
+      all 
+    end
+  end
+
   def follow(other_user)
     following << other_user
   end
 
-  # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
   end

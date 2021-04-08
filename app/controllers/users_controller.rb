@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.where('name LIKE ?', "%#{params[:search]}%")
+    @posts = User.where('content LIKE ?', "%#{params[:search]}%")
   end
 
   def show
     @user = User.find_by(id: params[:id])
+    @post  = current_user.posts.build
+    @feed_items = current_user.feed
   end
 
   def following
