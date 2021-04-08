@@ -3,7 +3,11 @@
     <div class="col-md-4 text-center">
       <%= image_tag avatar_url(@user), class: "round-img" %>
     </div>
+    <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
     <div class="col-md-8">
+    <%= render 'follow_form' %>
       <div class="row">
         <h1><%= @user.name %></h1>
         <% if @user == current_user %>
