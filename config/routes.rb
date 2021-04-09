@@ -3,6 +3,7 @@ Rails.application.routes.draw do
    controllers: { registrations: 'registrations' }
   root 'posts#index'
   get '/users/:id', to: 'users#show', as: 'user'
+  get  '/term',    to: 'static_pages#term'
   resources :users do
     member do
       get :following, :followers

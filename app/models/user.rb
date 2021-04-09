@@ -15,7 +15,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name,        presence: true, length: { maximum: 50 }
+  validates :username,    presence: true, length: { maximum: 50 }
+  validates :website,     presence: true, length: { maximum: 100 }
+  validates :introduce,   presence: true, length: { maximum: 250 }
+  validates :email,       presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
+  validates :phonenumber, presence: true
+  validates :sex,         presence: true
 
   def update_without_current_password(params, *options)
 
