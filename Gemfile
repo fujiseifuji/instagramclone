@@ -62,3 +62,5 @@ gem "mini_magick"
 gem 'pg', group: :production
 
 gem 'faker', '2.1.2'
+
+gem 'rubocop-airbnb'
